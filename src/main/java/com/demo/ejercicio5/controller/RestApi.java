@@ -4,22 +4,19 @@ import com.demo.ejercicio5.mapper.ServiceMapper;
 import com.demo.ejercicio5.model.User;
 import com.demo.ejercicio5.response.UserResponse;
 import com.demo.ejercicio5.service.Services;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class RestApi {
 
     private final Services services;
     private final ServiceMapper serviceMapper;
 
-    public RestApi(@Autowired(required = false) Services services, ServiceMapper serviceMapper) {
-        this.services = services;
-        this.serviceMapper = serviceMapper;
-    }
 
     @GetMapping("api/v1")
     public UserResponse getAll() {
